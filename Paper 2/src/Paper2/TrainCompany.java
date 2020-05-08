@@ -2,7 +2,7 @@ package Paper2;
 
 public class TrainCompany {
     private String companyName;
-    private String companyCode;
+    private String companyCode; // Unused???
     private int numberOfJourneys;
     private Journey[] journeyHistory = new Journey[100000];
     private Codes[] allCodes;
@@ -12,15 +12,16 @@ public class TrainCompany {
         this.numberOfJourneys = 0;
     }
 
-    public TrainCompany(){}
     // accessor and mutator methods
     Journey getJourney(int x) {
         return journeyHistory[x];
     }
+
     public void addJourney(Journey j) {
         journeyHistory[numberOfJourneys] = j;
         numberOfJourneys++;
     }
+
     public double averageDelay() {
         double avgDelay = 0;
         int n = numberOfJourneys;
@@ -32,9 +33,21 @@ public class TrainCompany {
                 avgDelay += journeyHistory[i].getDelay();
             }
         }
-        avgDelay /= n;
-        return avgDelay;
+        /*
+            Manuprāt, ir diezgan mulsinoši, ka uzdevuma nosacījumos ir minēts:
+            "You can assume that each TrainCompany object has at least one
+            journey.", jo tas 'hintotu', ka nākamā pārbaude nav jāveic. Tomēr,
+            tā jebkurā gadījumā jāveic, jo nosacījumos arī minēts, ka: "The
+            method does not count delays caused by weather". Tātad pirmā
+            piezīme ir nevajadzīga un tai nav efekta.
+        */
+        if(n > 0) {
+            avgDelay /= n;
+            return avgDelay;
+        }
+        return 0;
     }
+
     // returns the average delay for all of a company’s journeys
     public String longestDelay(Codes[] c) {
         String code = "";
@@ -52,8 +65,10 @@ public class TrainCompany {
         }
         return "";
     }
+
     // returns the route name for the journey with the longest delay
     public String toString(Codes[] c) {
-        return companyName + " : Average Delay = " + averageDelay() + " minutes : Longest Delay = " + longestDelay(allCodes);
+        return companyName + " : Average Delay = " + Math.floor(averageDelay() * 10) / 10 
+                + " minutes : Longest Delay = " + longestDelay(allCodes);
     }
 }
