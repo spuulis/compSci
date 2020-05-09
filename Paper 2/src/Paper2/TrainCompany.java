@@ -5,7 +5,6 @@ public class TrainCompany {
     private String companyCode; // Unused???
     private int numberOfJourneys;
     private Journey[] journeyHistory = new Journey[100000];
-    private Codes[] allCodes;
     public TrainCompany(String x, String y) {
         this.companyName = x;
         this.companyCode = y;
@@ -69,6 +68,6 @@ public class TrainCompany {
     // returns the route name for the journey with the longest delay
     public String toString(Codes[] c) {
         return companyName + " : Average Delay = " + Math.floor(averageDelay() * 10) / 10 
-                + " minutes : Longest Delay = " + longestDelay(allCodes);
+                + " minutes : Longest Delay = " + longestDelay(c);
     }
 }
