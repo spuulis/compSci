@@ -32,6 +32,18 @@ class Player {
         }
     }
 
+    read() {
+        let states = new Array(5)
+        for(let i = 0; i < 5; i++) {
+            states[i] = this.dice[i].getState()
+            if(states[i] == 0) {
+                throw "Rolling not finished"
+            }
+        }
+        states.sort();
+        return states;
+    }
+
     mouseClick(canvas, event) {
         const rect = canvas.getBoundingClientRect()
         const x = event.clientX - rect.left
