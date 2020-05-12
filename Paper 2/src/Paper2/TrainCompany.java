@@ -2,12 +2,12 @@ package Paper2;
 
 public class TrainCompany {
     private String companyName;
-    private String companyCode; // Unused???
+    // private String companyCode; // Unused???
     private int numberOfJourneys;
     private Journey[] journeyHistory = new Journey[100000];
     public TrainCompany(String x, String y) {
         this.companyName = x;
-        this.companyCode = y;
+        // this.companyCode = y;
         this.numberOfJourneys = 0;
     }
 
