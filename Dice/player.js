@@ -11,7 +11,7 @@ class Player {
         this.button = new Button(this.ctx)
 
         this.rollCount = 0
-        this.rollLimit = Infinity;
+        this.rollLimit = 3;
     }
 
     draw() {
@@ -26,6 +26,7 @@ class Player {
         for(let i = 0; i < 5; i++){
             this.dice[i].update(progress);
         }
+        this.button.update(this.rollLimit - this.rollCount, this.isRolling());
     }
 
     roll() {
@@ -41,6 +42,17 @@ class Player {
 
     resetRollCount() {
         this.rollCount = 0
+    }
+
+    isRolling() {
+        let states = new Array(5)
+        for(let i = 0; i < 5; i++) {
+            states[i] = this.dice[i].getState()
+            if(states[i] == 0) {
+                return true
+            }
+        }
+        return false
     }
 
     read() {
