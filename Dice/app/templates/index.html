@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="{{ url_for('static', filename='js/die.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/button.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/player.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/roundedRectangle.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body onload="init()">
+    <div style="width: 900px;margin: 0 auto;">
+        <div style="float: left; width: 200px;">
+            <canvas id="leftDice" width="200px" height="700px"></canvas>
+        </div>
+        <div style="float: left; width: 500px; height: 600px;">
+            <h1>Yahtzee</h1>
+        </div>
+        <div style="float: left; width: 200px;">
+            <canvas id="rightDice" width="200px" height="700px"></canvas>
+        </div>
+        <br style="clear: left;" />
+    </div>
+</body>
+</html>
