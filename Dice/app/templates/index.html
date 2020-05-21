@@ -1,26 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Yahtzee</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 
     <script src="{{ url_for('static', filename='js/die.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/game.js') }}"></script>
     <script src="{{ url_for('static', filename='js/button.js') }}"></script>
     <script src="{{ url_for('static', filename='js/player.js') }}"></script>
     <script src="{{ url_for('static', filename='js/roundedRectangle.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
 </head>
 <body onload="init()">
-    <div style="width: 900px;margin: 0 auto;">
-        <div style="float: left; width: 200px;">
-            <canvas id="leftDice" width="200px" height="700px"></canvas>
+    <div style="width: 900px; margin: 0 auto;">
+        <div style="float: left; width: 200px; padding-top: 40px;">
+            <canvas id="leftDice" width="200px" height="670px"></canvas>
+            <h1 id="p1s" class="text-center"></h1>
+            
         </div>
         <div style="float: left; width: 500px; height: 600px;">
-            <h1>Yahtzee</h1>
+            <h1 class="display-4 text-center">- YAHTZEE -</h1>
+            <table id="score" class="table table-hover table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">COMBINATION</th>
+                <th scope="col">SCORING</th> 
+                <th scope="col">P1</th>
+                <th scope="col">P2</th>
+            </tr>
+            </thead>
+            <tr>
+                <td scope="row">Aces</td>
+                <td>Count and add only Aces</td> 
+                <td class="text-center" >-</td>
+                <td class="text-center" >-</td>
+            </tr>
+            <tr>
+                <td scope="row">Twos</td>
+                <td>Count and add only Twos</td> 
+                <td class="text-center" >-</td>
+                <td class="text-center" >-</td>
+            </tr>
+            <tr>
+                <td scope="row">Threes</td>
+                <td>Count and add only Threes</td> 
+                <td class="text-center" >-</td>
+                <td class="text-center" >-</td>
+            </tr>
+            <tr>
+                <td scope="row">Fours</td>
+                <td>Count and add only Fours</td> 
+                <td class="text-center" >-</td>
+                <td class="text-center" >-</td>
+            </tr>
+            <tr>
+                <td scope="row">Fives</td>
+                <td>Count and add only Fives</td> 
+                <td class="text-center" >-</td>
+                <td class="text-center" >-</td>
+            </tr>
+            <tr>
+                <td scope="row">Sixes</td>
+                <td>Count and add only Sixes</td> 
+                <td class="text-center" >-</td>
+                <td class="text-center" >-</td>
+            </tr>
+            <tr>
+                <td scope="row">3 of a kind</td>
+                <td>Add total of all dice</td> 
+                <td class="text-center" >-</td>
+                <td class="text-center" >-</td>
+            </tr>
+            <tr>
+                <td scope="row">4 of a kind</td>
+                <td>Add total of all dice</td> 
+                <td class="text-center" >-</td>
+                <td class="text-center" >-</td>
+            </tr>
+            <tr>
+                <td scope="row">Full House</td>
+                <td>Score 25</td> 
+                <td class="text-center" >-</td>
+                <td class="text-center" >-</td>
+            </tr>
+            <tr>
+                <td scope="row">SM Straight</td>
+                <td>Score 30</td> 
+                <td class="text-center" >-</td>
+                <td class="text-center" >-</td>
+            </tr>
+            <tr>
+                <td scope="row">LG Straight</td>
+                <td>Score 40</td> 
+                <td class="text-center" >-</td>
+                <td class="text-center" >-</td>
+            </tr>
+            <tr>
+                <td scope="row">Yahtzee</td>
+                <td>Score 50</td> 
+                <td class="text-center" >-</td>
+                <td class="text-center" >-</td>
+            </tr>
+            <tr>
+                <td scope="row">Chance</td>
+                <td>Add total of all 5 dice</td> 
+                <td class="text-center" >-</td>
+                <td class="text-center" >-</td>
+            </tr>
+            </table>
+            
+            
         </div>
-        <div style="float: left; width: 200px;">
-            <canvas id="rightDice" width="200px" height="700px"></canvas>
+        <div style="float: left; width: 200px; padding-top: 40px;">
+            <canvas id="rightDice" width="200px" height="670px"></canvas>
+            <h1 id="p2s" class="text-center"></h1>
         </div>
         <br style="clear: left;" />
     </div>

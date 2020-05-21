@@ -1,20 +1,11 @@
-var lCtx, rCtx, lPlayer, rPlayer
+var lCtx, rCtx, lPlayer, rPlayer, game
 
 function init() {
     lCtx = document.getElementById("leftDice").getContext("2d")
     rCtx = document.getElementById("rightDice").getContext("2d")
 
-    lPlayer = new Player(lCtx, 0)
-    rPlayer = new Player(rCtx, 1)
-
-    const lCanvas = document.getElementById("leftDice")
-    lCanvas.addEventListener('mousedown', function(e) {
-        lPlayer.mouseClick(lCanvas, e)
-    })
-    const rCanvas = document.getElementById("rightDice")
-    rCanvas.addEventListener('mousedown', function(e) {
-        rPlayer.mouseClick(rCanvas, e)
-    })
+    game = new Game()
+    game.init()
 
     window.requestAnimationFrame(loop)
 }
@@ -22,6 +13,9 @@ function init() {
 function update(progress) {
     lPlayer.update(progress)
     rPlayer.update(progress)
+
+    document.getElementById("p1s").innerText = `Score: ${lPlayer.getScore()}`
+    document.getElementById("p2s").innerText = `Score: ${rPlayer.getScore()}`
 }
   
 function draw() {

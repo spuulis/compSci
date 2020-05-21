@@ -3,7 +3,7 @@ class Die {
         this.ctx = ctx;
         this.nr = nr;
 
-        this.state = Math.floor(Math.random() * 6 + 1);
+        this.state = -1
         this.locked = false;
 
         this.centerY = 70 + this.nr * 115;
@@ -75,9 +75,14 @@ class Die {
     }
 
     lock() {
-        if(this.timer == 0) {
-            this.locked = !this.locked;
+        if(this.timer == 0 && this.state != -1) {
+            this.locked = !this.locked
         }
+    }
+
+    reset() {
+        this.state = -1
+        this.locked = false;
     }
 
     getState() {
@@ -102,6 +107,9 @@ class Die {
 
         let eyes = new Array(9);
         switch(this.gState) {
+            case -1:
+                eyes = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+                break;
             case 1:
                 eyes = [0, 0, 0, 0, 1, 0, 0, 0, 0];
                 break;
